@@ -67,7 +67,11 @@ public class CourseController {
 
     @GetMapping
     public ResponseEntity<Page<CourseModel>> getAll(SpecificationTemplate.CourseSpec spec,
-                                                    @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+                                                    @PageableDefault(
+                                                            page = 0,
+                                                            size = 10,
+                                                            sort = "id",
+                                                            direction = Sort.Direction.ASC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findAll(spec, pageable));
     }
 
