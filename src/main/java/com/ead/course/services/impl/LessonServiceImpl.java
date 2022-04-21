@@ -2,9 +2,11 @@ package com.ead.course.services.impl;
 
 import com.ead.course.models.LessonModel;
 import com.ead.course.repositories.LessonRepository;
-import com.ead.course.repositories.ModuleRepository;
 import com.ead.course.services.LessonService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +37,10 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public List<LessonModel> findAll(UUID moduleId) {
         return lessonRepository.findAllLessonsIntoModule(moduleId);
+    }
+
+    @Override
+    public Page<LessonModel> findAll(Specification<LessonModel> spec, Pageable pageable) {
+        return lessonRepository.findAll(spec, pageable);
     }
 }

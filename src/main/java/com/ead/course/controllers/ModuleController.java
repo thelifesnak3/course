@@ -82,7 +82,8 @@ public class ModuleController {
                                                             size = 10,
                                                             sort = "id",
                                                             direction = Sort.Direction.ASC) Pageable pageable) {
-        return ResponseEntity.status(HttpStatus.OK).body(moduleService.findAll(SpecificationTemplate.moduleCourseId(courseId).and(spec), pageable));
+        return ResponseEntity.status(HttpStatus.OK).body(
+                moduleService.findAll(SpecificationTemplate.moduleCourseId(courseId).and(spec), pageable));
     }
 
     @GetMapping("/courses/{courseId}/modules/{moduleId}")
